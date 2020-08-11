@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/home.css" rel="stylesheet">
+    <title>home</title>
+</head>
+
+<body>
+    <div class="hear_div">
+        <div class="left_float">
+            <a href="">
+                <img src="/img/colud.png" style="margin-left: 20px;"></img>
+            </a>
+        </div>
+        <div class="heard_nav left_float">
+            <ul id="hear_ul" class="nav">
+                <li role="presentation"><a href="http://localhost:8080/home">我的网盘</a></li>
+                <li role="presentation"><a href="http://localhost:8080/images">我的相册</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="left_list left_float">
+            <div id="left_list_div">
+                <ul class="nav">
+                    <li role="presentation"><a href="#"><span class="glyphicon glyphicon-folder-open" style="display:inline;"></span> 全部文件</a></li>
+                    <li role="presentation"><a href="#">图片</a></li>
+                    <li role="presentation"><a href="#">文档</a></li>
+                    <li role="presentation"><a href="#">音乐</a></li>
+                </ul>
+            </div>
+            <div id="left_list_div_2">
+                <ul class="nav">
+                    <li role="presentation"><a href="#">容量</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="right_list" class="left_float">
+            <div class="left_float">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <input id="file" type="file" name="file" oninput="fileUpload()" />
+                </form>
+                <button id="upload" type="button" class="btn btn-success">上传</button>
+            </div>
+            <div id="myfile">
+                <table id="right_table" class="table table-striped">
+                    <tr>
+                        <td>文件名</td>
+                        <td>大小</td>
+                        <td>修改日期</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/jquery-3.5.1.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="/js/html_js/home.js"></script>
+
+</html>

@@ -1,0 +1,99 @@
+.hear_div {
+    /* position: absolute; */
+    margin-top: 0px;
+    height: 60px;
+    width: 100%;
+    background-color: white;
+}
+
+.heard_nav {
+    margin-top: 15px;
+    margin-left: 50px;
+}
+
+#hear_ul {
+    list-style: none;
+}
+
+#hear_ul li {
+    float: left;
+}
+
+.left_float {
+    float: left;
+}
+
+.content {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.left_list {
+    width: 195px;
+    background-color: rgb(247, 247, 247);
+    border: 1px solid black;
+}
+
+#left_list_div {
+    width: 100%;
+}
+
+#left_list_div ul :first-child {
+    width: 100%;
+    margin-left: 0px;
+}
+
+#left_list_div ul li {
+    width: 100%;
+    text-align: center;
+}
+
+#left_list_div_2 ul li {
+    width: 100%;
+    text-align: center;
+}
+
+#right_list {
+    margin-left: 20px;
+}
+
+#uploadForm {
+    position: absolute;
+    z-index: 10;
+    width: 50px;
+    height: 30px;
+    /* border: 1px solid black; */
+}
+
+#upload {
+    text-align: center;
+    line-height: 0px;
+    z-index: 9;
+    width: 49px;
+    height: 29px;
+}
+
+#file {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#myfile {
+    margin-top: 100px;
+    margin-left: 20px;
+    /* display: block; */
+}
+
+#right_table a {
+    float: right;
+    margin-right: 0px;
+}
+
+#right_table tr td:first-child {
+    width: 400px;
+}
+
+#right_table tr td:first-child+td {
+    width: 300px;
+}

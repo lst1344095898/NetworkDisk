@@ -1,0 +1,14 @@
+.from_control_size {
+    width: 400px;
+    height: 40px;
+}
+
+.from_position {
+    position: absolute;
+    left: 35%;
+    top: 35%;
+}
+
+.button_style {
+    margin-top: 30px;
+}

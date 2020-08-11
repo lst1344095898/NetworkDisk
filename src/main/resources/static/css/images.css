@@ -1,0 +1,35 @@
+.hear_div {
+    /* position: absolute; */
+    margin-top: 0px;
+    height: 60px;
+    width: 100%;
+    background-color: white;
+}
+
+.heard_nav {
+    margin-top: 15px;
+    margin-left: 50px;
+}
+
+#hear_ul {
+    list-style: none;
+}
+
+#hear_ul li {
+    float: left;
+}
+
+.left_float {
+    float: left;
+}
+
+#div1 {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+}
+
+.imageSize {
+    width: 475px;
+    height: 300px;
+}
