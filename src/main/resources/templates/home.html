@@ -10,37 +10,37 @@
 </head>
 
 <body>
+    <video id="v1" autoplay loop muted>
+        <source src="/voide/back.mp4" type="video/mp4"  />
+    </video>
     <div class="hear_div">
-        <div class="left_float">
-            <a href="">
-                <img src="/img/colud.png" style="margin-left: 20px;"></img>
-            </a>
-        </div>
+
         <div class="heard_nav left_float">
             <ul id="hear_ul" class="nav">
-                <li role="presentation"><a href="http://localhost:8080/home">我的网盘</a></li>
-                <li role="presentation"><a href="http://localhost:8080/images">我的相册</a></li>
+                <li role="presentation"><a class="btn btn-default hear_button" href="/html/home">我的网盘</a></li>
+                <li role="presentation"><a class="btn btn-default hear_button" href="/html/images">我的相册</a></li>
             </ul>
         </div>
-    </div>
-    <div class="content">
-        <div class="left_list left_float">
-            <div id="left_list_div">
-                <ul class="nav">
-                    <li role="presentation"><a href="#"><span class="glyphicon glyphicon-folder-open" style="display:inline;"></span> 全部文件</a></li>
-                    <li role="presentation"><a href="#">图片</a></li>
-                    <li role="presentation"><a href="#">文档</a></li>
-                    <li role="presentation"><a href="#">音乐</a></li>
-                </ul>
+        <div id="head_portrait" class="left_float hear_img_div">
+            <div class="left_float" onmouseover="showUserInfo()">
+                <img src="/img/heard.png" class="heard_img left_float">
             </div>
-            <div id="left_list_div_2">
-                <ul class="nav">
-                    <li role="presentation"><a href="#">容量</a></li>
+            <span></span>
+            <div id="showUserInfo">
+                <ul class="list-group">
+                    <li class="list-group-item back"><img class="img_center" src="/img/heard.png"></li>
+                    <li class="list-group-item text_center"></li>
+                    <li class="list-group-item text_center">修改密码</li>
+                    <li class="list-group-item text_center">退出</li>
                 </ul>
             </div>
         </div>
+    </div>
+    <div id="test_back"></div>
+    <div id="back_div" onmouseover="showout()"> </div>
+    <div class="content">
         <div id="right_list" class="left_float">
-            <div class="left_float">
+            <div id="fileUp" class="left_float">
                 <form id="uploadForm" enctype="multipart/form-data">
                     <input id="file" type="file" name="file" oninput="fileUpload()" />
                 </form>
@@ -58,8 +58,8 @@
         </div>
     </div>
 </body>
-<script src="/js/jquery-3.5.1.min.js"></script>
-<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<script src="/js/html_js/home.js"></script>
+<script src="/js/jquery-3.5.1.min.js "></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js "></script>
+<script src="/js/html_js/home.js "></script>
 
 </html>

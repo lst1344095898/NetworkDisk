@@ -9,12 +9,9 @@ function login() {
         data: JSON.stringify(data),
         dataType: "json",
         contentType: 'application/json;charset=UTF-8',
-        xhrFields: {
-            withCredentials: true
-        },
-        crossDomain: true,
         success: function(ret) {
-            location.href = "http://localhost:8080/home";
+            location.href = "http://localhost:8080//html/home";
+            alert(ret);
         }
     });
 }

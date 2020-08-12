@@ -14,9 +14,9 @@ public class FileServiceImpl  implements FileService{
 	@Autowired
 	private FileDao fileDao;
 	@Override
-	public boolean saveFile(String fileName, String filePath, String type, long fileSize) {
+	public boolean saveFile(String fileName, String filePath, String type, long fileSize,String username) {
 		// TODO Auto-generated method stub
-		if (fileDao.saveFile(fileName, filePath, type, fileSize)!=0) {
+		if (fileDao.saveFile(fileName, filePath, type, fileSize,username)!=0) {
 			return true;
 		}
 		return false;

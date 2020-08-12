@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/js/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/public.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <video id="v1" autoplay loop muted>
+        <source src="/voide/back.mp4" type="video/mp4"  />
+    </video>
+    <div id="login">
+        <a href="http://localhost:8080/html/login">
+            <img src="/img/login3.png" alt="">
+            <span class="span_style">登录</span>
+        </a>
+    </div>
+    <div id="outimg" onclick="returnPage()">
+        <img src="/img/out.png" alt="">
+        <span class="span_style">退出</span>
+    </div>
+    <div id="file" onclick="filedown()">
+        <img src="/img/file.png" alt="">
+        <span id="" class="span_style">下载文件</span>
+    </div>
+    <div id="img" onclick="imgdown()">
+        <img src="/img/img.png" alt="">
+        <span class="span_style">下载图片</span>
+    </div>
+    <div id="showFile">
+        <table id="showFileTable" class="table table-striped">
+            <tr>
+                <td>文件名</td>
+                <td>大小</td>
+                <td>修改日期</td>
+            </tr>
+        </table>
+    </div>
+    <div id="images" class="images_div">
+    </div>
+</body>
+<script src="/js/jquery-3.5.1.min.js"></script>
+<script src="/js/bootstrap-3.3.7-dist/js/bootstrap.min.js "></script>
+<script src="/js/html_js/public.js"></script>
+
+</html>

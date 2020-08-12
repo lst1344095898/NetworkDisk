@@ -10,21 +10,34 @@
 </head>
 
 <body>
+    <video id="v1" autoplay loop muted>
+        <source src="/voide/back.mp4" type="video/mp4"  />
+    </video>
     <div class="hear_div">
-        <div class="left_float">
-            <a href="">
-                <img src="/img/colud.png" style="margin-left: 20px;"></img>
-            </a>
-        </div>
         <div class="heard_nav left_float">
             <ul id="hear_ul" class="nav">
-                <li role="presentation"><a href="http://localhost:8080/home">我的网盘</a></li>
-                <li role="presentation"><a href="http://localhost:8080/images">我的相册</a></li>
+                <li role="presentation"><a class="btn btn-default hear_button" href="/html/home">我的网盘</a></li>
+                <li role="presentation"><a class="btn btn-default hear_button" href="/html/images">我的相册</a></li>
             </ul>
         </div>
+        <div id="head_portrait" class="left_float hear_img_div">
+            <div class="left_float" onmouseover="showUserInfo()">
+                <img src="/img/heard.png" class="heard_img left_float">
+            </div>
+            <span>lst</span>
+            <div id="showUserInfo">
+                <ul class="list-group">
+                    <li class="list-group-item back"><img class="img_center" src="/img/heard.png"></li>
+                    <li class="list-group-item text_center">lst</li>
+                    <li class="list-group-item text_center">修改密码</li>
+                    <li class="list-group-item text_center">退出</li>
+                </ul>
+            </div>
+        </div>
     </div>
+    <div id="test_back"></div>
+    <div id="back_div" onmouseover="showout()"> </div>
     <div class="content">
-        <button onclick="getimage1()">检索</button>
         <div id="images">
         </div>
     </div>

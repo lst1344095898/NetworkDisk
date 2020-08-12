@@ -1,3 +1,30 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+video {
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+    /*加滤镜*/
+    /*filter: blur(15px); //背景模糊设置 */
+    /*-webkit-filter: grayscale(100%);*/
+    /*filter:grayscale(100%); //背景灰度设置*/
+    z-index: -11
+}
+
+source {
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+}
+
 .hear_div {
     /* position: absolute; */
     margin-top: 0px;
@@ -8,7 +35,84 @@
 
 .heard_nav {
     margin-top: 15px;
-    margin-left: 50px;
+    margin-left: 700px;
+}
+
+.hear_button {
+    background-color: #3397ff;
+}
+
+#head_portrait {
+    z-index: 3;
+}
+
+#head_portrait span {
+    display: block;
+    float: left;
+    margin-top: 10px;
+    margin-left: 5px;
+    font-size: 30px;
+}
+
+.hear_img_div {
+    position: absolute;
+    right: 12%;
+}
+
+.heard_img {
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+#showUserInfo {
+    position: absolute;
+    top: 20px;
+    margin-top: 40px;
+    margin-left: -45px;
+    width: 130px;
+    height: 230px;
+    display: none;
+}
+
+#arrowUp {
+    width: 40px;
+    height: 50px;
+    background-image: url('/static/img/arrowUp.png');
+}
+
+#showUserInfo .back {
+    background-color: cadetblue;
+}
+
+#showUserInfo ul li {
+    font-size: 20px;
+}
+
+#back_div {
+    opacity: 0;
+    z-index: 2;
+    position: absolute;
+    background-color: aqua;
+    top: 0px;
+    right: 7%;
+    width: 200px;
+    height: 300px;
+}
+
+#test_back {
+    opacity: 0;
+    z-index: 3;
+    position: absolute;
+    background-color: aquamarine;
+    top: 5%;
+    right: 13.4%;
+    width: 60px;
+    height: 20px;
+}
+
+.text_center {
+    text-align: center;
 }
 
 #hear_ul {
@@ -29,6 +133,7 @@
 }
 
 .left_list {
+    margin-left: 0px;
     width: 195px;
     background-color: rgb(247, 247, 247);
     border: 1px solid black;
@@ -73,6 +178,12 @@
     height: 29px;
 }
 
+#fileUp {
+    position: relative;
+    left: 700px;
+    top: 100px;
+}
+
 #file {
     opacity: 0;
     width: 100%;
@@ -80,9 +191,10 @@
 }
 
 #myfile {
-    margin-top: 100px;
-    margin-left: 20px;
-    /* display: block; */
+    position: relative;
+    background-color: white;
+    top: 200px;
+    left: 400px;
 }
 
 #right_table a {

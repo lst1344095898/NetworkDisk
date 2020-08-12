@@ -5,10 +5,6 @@ window.onload = function() {
             url: "http://localhost:8080/file/getFileByUserName",
             data: { "username": username },
             cache: false,
-            xhrFields: {
-                withCredentials: true
-            },
-            crossDomain: true,
             success: function(ret) {
                 console.log(ret.data[0]);
                 var after = document.getElementById('right_table').firstElementChild;
@@ -19,7 +15,19 @@ window.onload = function() {
                     after.appendChild(tr)
                 }
             }
+        });
+        $.ajax({
+            type: 'post',
+            url: "http://localhost:8080/getUserInfo",
+            data: null,
+            cache: false,
+            success: function (ret){
+                document.getElementById('head_portrait').children[1].innerHTML=ret.data
+                document.getElementById("showUserInfo")
+                    .children[0].children[1].innerHTML=ret.data
+            }
         })
+
     }
     // 下载
 function downloadfile() {
@@ -66,4 +74,14 @@ function downloadFileByForm() {
     var form = $("<form></form>").attr("action", url).attr("method", "post");
     form.append($("<input></input>").attr("type", "hidden").attr("name", "fileName").attr("value", fileName));
     form.appendTo('body').submit().remove();
+}
+
+function showUserInfo() {
+    var showUserInfo = document.getElementById('showUserInfo')
+    showUserInfo.style.display = "block";
+}
+
+function showout() {
+    var showUserInfo = document.getElementById('showUserInfo')
+    showUserInfo.style.display = "none";
 }

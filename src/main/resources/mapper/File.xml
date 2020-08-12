@@ -12,7 +12,7 @@
 		<result column="userid" property="userid"/>
 	</resultMap>
 	<insert id="saveFile" parameterType="java.util.Map">
-		insert into networkdisk.tb_file(fileName,filePath,type,fileSize) values (#{fileName},#{filePath},#{type},#{fileSize})
+		insert into networkdisk.tb_file(fileName,filePath,type,fileSize,userid) values (#{fileName},#{filePath},#{type},#{fileSize},(select userid from networkdisk.tb_user where username=#{username}))
 	</insert>
 	<select id="getFileByUserName" parameterType="java.util.Map" resultMap="FileResultMap">
 		select * from networkdisk.tb_file where userid in (select userid from networkdisk.tb_user where username=#{username})

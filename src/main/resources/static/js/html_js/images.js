@@ -1,4 +1,4 @@
-function getimage1() {
+window.onload = function() {
     //
     // var image1 = document.getElementById('images1')
     // var imageid = '1';
@@ -24,4 +24,14 @@ function getimage1() {
         // image1.style.width = "300px";
         // image1.style.height = "300px"
         // image1.src = 'http://localhost:8080/file/images/getImages/' + imageid
+}
+
+function showUserInfo() {
+    var showUserInfo = document.getElementById('showUserInfo')
+    showUserInfo.style.display = "block";
+}
+
+function showout() {
+    var showUserInfo = document.getElementById('showUserInfo')
+    showUserInfo.style.display = "none";
 }

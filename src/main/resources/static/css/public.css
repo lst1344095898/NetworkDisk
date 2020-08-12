@@ -1,0 +1,146 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+video {
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+    /*加滤镜*/
+    /*filter: blur(15px); //背景模糊设置 */
+    /*-webkit-filter: grayscale(100%);*/
+    /*filter:grayscale(100%); //背景灰度设置*/
+    z-index: -11
+}
+
+source {
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    width: auto;
+}
+
+#login {
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+#login img {
+    width: 50px;
+    height: 50px;
+}
+
+#outimg {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+#outimg img {
+    width: 50px;
+    height: 50px;
+}
+
+#outimg span {
+    color: white;
+}
+
+#login .span_style {
+    display: block;
+    color: rgb(71, 105, 216);
+    margin-left: 10px;
+}
+
+#file {
+    position: absolute;
+    left: 40%;
+    top: 40%;
+}
+
+#file .span_style {
+    display: block;
+    color: white;
+}
+
+#file img {
+    width: 50px;
+    height: 50px;
+}
+
+#img {
+    position: absolute;
+    right: 40%;
+    top: 40%;
+}
+
+#img .span_style {
+    display: block;
+    color: white;
+}
+
+#img img {
+    width: 50px;
+    height: 50px;
+}
+
+#showFile {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 900px;
+    height: 500px;
+    background-color: white;
+}
+
+#showFileTable a {
+    float: right;
+    margin-right: 0px;
+}
+
+#showFileTable tr td:first-child {
+    width: 400px;
+}
+
+#showFileTable tr td:first-child+td {
+    width: 300px;
+}
+
+#showFileTable tr td:first-child+td+td {
+    width: 200px;
+}
+
+.left_float {
+    float: left;
+}
+
+.X_img {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: -20%;
+    left: 40%;
+}
+
+.imageSize {
+    width: 475px;
+    height: 300px;
+}
+
+.images_div {
+    z-index: 3;
+    margin-left: 10px;
+    margin-top: 10px;
+}
