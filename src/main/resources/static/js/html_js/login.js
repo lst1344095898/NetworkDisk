@@ -10,8 +10,20 @@ function login() {
         dataType: "json",
         contentType: 'application/json;charset=UTF-8',
         success: function(ret) {
-            location.href = "http://localhost:8080//html/home";
-            alert(ret);
+            console.log(ret)
+            if (ret.state_id) {
+                if (ret.data==="admin"){
+                    console.log("admin")
+                    location.href = "http://localhost:8080/html/admin";
+                    }else {
+                    location.href = "http://localhost:8080/html/home";
+                }
+            }else {
+                alert("密码错误")
+            }
+        },
+        error: function (ret){
+            console.log("error");
         }
     });
 }

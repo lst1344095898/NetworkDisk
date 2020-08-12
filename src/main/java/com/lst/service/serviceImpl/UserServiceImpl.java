@@ -9,11 +9,19 @@ import com.lst.service.UserService;
 @Service
 public class UserServiceImpl implements UserService{
 	@Autowired
-	private UserDao UserDao;
+	private UserDao userDao;
 	@Override
 	public boolean login(String username, String password) {
 		// TODO Auto-generated method stub
-		if (UserDao.getPasswordByUsername(username).equals(password)) {
+		if (userDao.getPasswordByUsername(username).equals(password)) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean editPassword(String username ,String password) {
+		if (userDao.editPassword(username,password)!=0){
 			return true;
 		}
 		return false;

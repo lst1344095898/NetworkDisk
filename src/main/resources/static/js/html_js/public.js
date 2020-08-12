@@ -1,10 +1,8 @@
 window.onload = function() {
-        var username = "lst";
         $.ajax({
             type: 'post',
             url: "http://localhost:8080/file/getFileByUserName",
-            data: { "username": username },
-            cache: false,
+            data: {"public": "public"},
             success: function(ret) {
                 console.log(ret.data[0]);
                 let showFile = document.getElementById('showFile');
@@ -12,15 +10,15 @@ window.onload = function() {
                 var after = document.getElementById('showFileTable');
                 for (var i = 0; i < ret.data.length; i++) {
                     var tr = document.createElement("tr");
-                    tr.innerHTML = '<td>' + ret.data[i].fileName + '<a onclick="downloadfile()" id="' + ret.data[i].fileid + '"><span class="glyphicon glyphicon-save"></span></a></td><td>' + ret.data[i].fileSize + 'B' + '</td>'
+                    tr.innerHTML = '<td>' + ret.data[i].fileName + '<a onclick="downloadfile()" id="' + ret.data[i].fileid + '"><span class="glyphicon glyphicon-save"></span></a></td><td>' + ret.data[i].fileSize + 'B' + '</td><td>'+ ret.data[i].uptime +'</td>'
                     after.firstElementChild.appendChild(tr)
                 }
             }
         })
         $.ajax({
             type: 'post',
-            url: "http://localhost:8080/file/getAllImages",
-            data: null,
+            url: "http://localhost:8080/file/getAllImagesByUsername",
+            data: {"public": "public"},
             success: function(ret) {
                 console.log("成功");
                 var images = document.getElementById('images')
@@ -160,4 +158,18 @@ function returnPage() {
             document.getElementById('img').children[0].style.height = pos + "px";
         }
     }
+}
+// 下载文件
+function downloadfile() {
+    var that = event.currentTarget.id;
+    // 开始下载
+    console.log("ajaxDownloadSynchronized");
+    // 下载地址
+    var url = "http://localhost:8080/file/download";
+    // 下载文件id
+    var fileid = that;
+    // 模拟表单下载
+    var form = $("<form></form>").attr("action", url).attr("method", "post");
+    form.append($("<input></input>").attr("type", "hidden").attr("name", "fileid").attr("value", fileid));
+    form.appendTo('body').submit().remove();
 }

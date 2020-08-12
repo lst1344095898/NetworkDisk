@@ -30,12 +30,27 @@
                 <ul class="list-group">
                     <li class="list-group-item back"><img class="img_center" src="/img/heard.png"></li>
                     <li class="list-group-item text_center"></li>
-                    <li class="list-group-item text_center">修改密码</li>
-                    <li class="list-group-item text_center">退出</li>
+                    <li class="list-group-item text_center" onclick="editPassword()"><a href="#">修改密码</a></li>
+                    <li class="list-group-item text_center" onclick="outLogin()"><a href="#">退出</a></li>
                 </ul>
             </div>
         </div>
     </div>
+    <div id="editPassword">
+        <div id="password_input" class="form-horizontal">
+            <div class="form-group">
+                <label for="newpassword" class="col-sm-3 control-label">输入新密码</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" id="newpassword" placeholder="password">
+                </div>
+            </div>
+            <div class="left_float center_size">
+                <button class="btn btn-success center-block left_float" onclick="Yes()">确定</button>
+                <button class="btn btn-success center-block left_float" onclick="No()">取消</button>
+            </div>
+        </div>
+    </div>
+    <div id="back_plate"></div>
     <div id="test_back"></div>
     <div id="back_div" onmouseover="showout()"> </div>
     <div class="content">

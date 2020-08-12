@@ -6,4 +6,7 @@
 	<select id="getPasswordByUsername" parameterType="map" resultType="string">
 		select password from networkdisk.tb_user where username = #{username}
 	</select>
+	<update id="editPassword" parameterType="map">
+		update  networkdisk.tb_user set password=#{password} where username=#{username}
+	</update>
 </mapper>

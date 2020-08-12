@@ -8,6 +8,7 @@ public class FileEntity {
 	private String type;
 	private int fileSize;
 	private int userid;
+	private String uptime;
 	public int getFileid() {
 		return fileid;
 	}
@@ -44,12 +45,25 @@ public class FileEntity {
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
-	@Override
-	public String toString() {
-		return "FileEntity [fileid=" + fileid + ", fileName=" + fileName + ", filePath=" + filePath + ", type=" + type
-				+ ", fileSize=" + fileSize + ", userid=" + userid + "]";
+
+	public String getUptime() {
+		return uptime;
 	}
 
+	public void setUptime(String uptime) {
+		this.uptime = uptime;
+	}
 
-	
+	@Override
+	public String toString() {
+		return "FileEntity{" +
+				"fileid=" + fileid +
+				", fileName='" + fileName + '\'' +
+				", filePath='" + filePath + '\'' +
+				", type='" + type + '\'' +
+				", fileSize=" + fileSize +
+				", userid=" + userid +
+				", uptime='" + uptime + '\'' +
+				'}';
+	}
 }

@@ -10,4 +10,5 @@ public interface FileService {
 	State<ArrayList<FileEntity>> getFileByUserName(String username);
 	FileEntity getFilePathByFileId(String fileid);
 	State<ArrayList<FileEntity>> getAllImages();
+	State<ArrayList<FileEntity>> getAllImagesByUsername(String username);
 }

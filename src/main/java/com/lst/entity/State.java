@@ -26,7 +26,7 @@ public class State<T> {
 	}
 	@Override
 	public String toString() {
-		return "State [state_id=" + state_id + ", dataT=" + data + ", error=" + error + "]";
+		return "State [state_id=" + state_id + ", data=" + data + ", error=" + error + "]";
 	}
 	
 }	

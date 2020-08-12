@@ -11,7 +11,7 @@ window.onload = function() {
                 // var tbody = document.createElement("tbody");
                 for (var i = 0; i < ret.data.length; i++) {
                     var tr = document.createElement("tr");
-                    tr.innerHTML = '<td>' + ret.data[i].fileName + '<a onclick="downloadfile()" id="' + ret.data[i].fileid + '"><span class="glyphicon glyphicon-save"></span></a></td><td>' + ret.data[i].fileSize + 'B' + '</td>'
+                    tr.innerHTML = '<td>' + ret.data[i].fileName + '<a onclick="downloadfile()" id="' + ret.data[i].fileid + '"><span class="glyphicon glyphicon-save"></span></a></td><td>' + ret.data[i].fileSize + 'B' + '</td><td>'+ ret.data[i].uptime +'</td>'
                     after.appendChild(tr)
                 }
             }
@@ -84,4 +84,48 @@ function showUserInfo() {
 function showout() {
     var showUserInfo = document.getElementById('showUserInfo')
     showUserInfo.style.display = "none";
+}
+// 修改密码
+function editPassword() {
+    document.getElementById('editPassword').style.display = "block"
+    document.getElementById('back_plate').style.display = "block"
+}
+
+function Yes() {
+    var password = document.getElementById('newpassword').value
+    var data={"password" : password}
+    $.ajax({
+        type: 'post',
+        url: "http://localhost:8080/editPassword",
+        dataType: "json",
+        data: JSON.stringify(data),
+        contentType: 'application/json;charset=UTF-8',
+        success: function(ret) {
+            if (ret) {
+                document.getElementById('editPassword').style.display = "none"
+                document.getElementById('back_plate').style.display = "none"
+                alert('密码修改成功')
+            } else {
+                alert('密码修改失败')
+            }
+        }
+    })
+}
+//取消
+function  No(){
+    document.getElementById('editPassword').style.display = "none"
+    document.getElementById('back_plate').style.display = "none"
+}
+function outLogin(){
+    $.ajax({
+        type:'post',
+        url: "http://localhost:8080/cleanSession",
+        success:  function (ret){
+            if (ret){
+                location.href="http://localhost:8080/"
+            }else{
+                alert("请关闭浏览器");
+            }
+        }
+    })
 }

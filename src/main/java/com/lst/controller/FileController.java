@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
@@ -16,15 +17,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lst.entity.FileEntity;
@@ -87,12 +80,24 @@ public class FileController{
 	@SuppressWarnings("rawtypes")
 	@RequestMapping("/download")
 	public ResponseEntity download(HttpServletRequest request)throws Exception{
-		// 得到前端需要下载的文件名
+		//得到session 通过不同的用户权限从不同的文件夹得到文件
+		HttpSession session=request.getSession(false);
+		String username;
+		try {
+			username = (String) session.getAttribute("username");
+		}catch (Exception e){
+			System.out.println("没有登录“session”为空下载的是public资源");
+			username = "public";
+		}
+//		username = (String) session.getAttribute("username");
+		System.out.println(username);
+		// 得到前端需要下载的文件id
 		String fileid=request.getParameter("fileid");
-		// 从数据库中通过fileid获取文件信息
+		// 从数据库中通过fileid获取文件信息 		String filePath="H:/testdown/";
 		FileEntity fileInfo= fileService.getFilePathByFileId(fileid);
+		String Path= "H:/testdown/"+username+"/"+fileInfo.getFileName()+fileInfo.getType();
 		// 通过文件地址从文件夹获取文件
-		FileSystemResource file=new FileSystemResource(fileInfo.getFilePath());
+		FileSystemResource file=new FileSystemResource(Path);
 		// new 一个响应头
 		HttpHeaders headers=new HttpHeaders();
 		//在响应头添加文件名加后缀
@@ -106,18 +111,46 @@ public class FileController{
 				.body(new InputStreamResource(file.getInputStream()));
 		
 	}
-	// 通过用户名得到文件
-	@ResponseBody
-	@PostMapping("/getFileByUserName")
-	public State<ArrayList<FileEntity>> getFileByUserName(HttpServletRequest request){
-//		HttpSession session=request.getSession(false);
-//		String usernameString=(String) session.getAttribute("username");
-//		System.out.println("session:"+usernameString);
-		State<ArrayList<FileEntity>> state=new State<ArrayList<FileEntity>>();
-		System.out.println(request.getParameter("username"));
-		state = fileService.getFileByUserName(request.getParameter("username"));
+	// 通过用户名得到文件信息
+	@PostMapping("/getFileByUserName}")
+	public State<ArrayList<FileEntity>> getFileByUserName(@RequestBody Map<String,String> map, HttpServletRequest request) throws  Exception{
+		System.out.println("public"+map.get("public"));
+		//得到session 通过不同的用户权限从数据库中文件夹得到不同文件信息
+//		System.out.println(path);
+		HttpSession session=request.getSession(false);
+		String username;
+		try {
+			username = (String) session.getAttribute("username");
+		}catch (Exception e){
+			username = "";
+			System.out.println("没有登录“session”");
+		}
+		if (map.get("public").equals("public")){
+			username="public";
+		}
+//		System.out.println(request.getParameter("username"));
+		// 根据username得到文件信息
+		//判断是否为共用资源
+
+		State<ArrayList<FileEntity>> state=fileService.getFileByUserName(username);
 		System.out.println(state);
 		return state;
+	}
+	// 通过用户名得到所有图片信息
+	@PostMapping("/getAllImagesByUsername}")
+	public State<ArrayList<FileEntity>> getAllImagesByUsername(HttpServletRequest request)throws  Exception{
+		State<ArrayList<FileEntity>> state=new State<ArrayList<FileEntity>>();
+		String username;
+		try {
+			HttpSession session=request.getSession(false);
+			username=(String) session.getAttribute("username");
+		}catch (Exception e){
+			username="";
+			System.out.println("session错误");
+		}
+		state=fileService.getAllImagesByUsername(username);
+		System.out.println("username:"+username+"state:"+ state);
+		return  state;
 	}
 	// 得到所有图片信息
 	@PostMapping("/getAllImages")
@@ -126,7 +159,6 @@ public class FileController{
 		state = fileService.getAllImages();
 		return state;
 	}
-	// 通过用户名得到所有图片信息
 	//通过图片ID得到所有图片
 	@RequestMapping(value = "/images/getImageByfileId/{imageId}",method = RequestMethod.GET)
 	public String getImageByImageId(@PathVariable String imageId,HttpServletRequest request,HttpServletResponse response) throws IOException{
