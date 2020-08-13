@@ -1,11 +1,10 @@
 window.onload = function() {
-    //
-    // var image1 = document.getElementById('images1')
-    // var imageid = '1';
     $.ajax({
             type: 'post',
             url: "http://localhost:8080/file/getAllImagesByUsername",
-            data: null,
+            data: JSON.stringify({"images":"images"}),
+            dataType: 'json',
+            contentType: 'application/json;charset=UTF-8',
             success: function(ret) {
                 console.log("成功");
                 var images = document.getElementById('images')

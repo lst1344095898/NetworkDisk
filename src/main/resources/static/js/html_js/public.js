@@ -1,8 +1,12 @@
 window.onload = function() {
+    var public="public"
+    var data={"public": public};
         $.ajax({
             type: 'post',
             url: "http://localhost:8080/file/getFileByUserName",
-            data: {"public": "public"},
+            data: JSON.stringify(data),
+            dataType: 'json',
+            contentType: 'application/json;charset=UTF-8',
             success: function(ret) {
                 console.log(ret.data[0]);
                 let showFile = document.getElementById('showFile');
@@ -18,7 +22,9 @@ window.onload = function() {
         $.ajax({
             type: 'post',
             url: "http://localhost:8080/file/getAllImagesByUsername",
-            data: {"public": "public"},
+            data: JSON.stringify(data),
+            dataType: 'json',
+            contentType: 'application/json;charset=UTF-8',
             success: function(ret) {
                 console.log("成功");
                 var images = document.getElementById('images')

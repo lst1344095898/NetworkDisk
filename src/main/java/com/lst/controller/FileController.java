@@ -33,7 +33,7 @@ public class FileController{
 	// 上传文件
 	@PostMapping("/upload")
 	@ResponseBody
-	public String upload(@RequestParam("file") MultipartFile file ,HttpServletRequest request) throws IOException {
+	public String upload(@RequestParam("file") MultipartFile file , HttpServletRequest request) throws IOException {
 		if (file.isEmpty()) {
 			return "文件为空";
 		}
@@ -48,8 +48,20 @@ public class FileController{
 		//服务器本地文件地址
 		String filePath="H:/testdown/";
 		//从seesion中得到用户名
-		HttpSession session=request.getSession(false);
-		String username=(String) session.getAttribute("username");
+		String username;
+		try {
+			HttpSession session=request.getSession(false);
+			username=(String) session.getAttribute("username");
+		}catch (Exception e){
+			System.out.println("session错误");
+			if (request.getParameter("htmlName")!=""){
+				username=request.getParameter("htmlName");
+			}else{
+				return "上传失败";
+			}
+
+		}
+
 		System.out.println("用户名："+ username);
 		// 保存路径 服务器文件地址+文件名字 +上用户名
 		fileName = filePath + username+ "/" + fileName;
@@ -112,11 +124,8 @@ public class FileController{
 		
 	}
 	// 通过用户名得到文件信息
-	@PostMapping("/getFileByUserName}")
+	@PostMapping("/getFileByUserName")
 	public State<ArrayList<FileEntity>> getFileByUserName(@RequestBody Map<String,String> map, HttpServletRequest request) throws  Exception{
-		System.out.println("public"+map.get("public"));
-		//得到session 通过不同的用户权限从数据库中文件夹得到不同文件信息
-//		System.out.println(path);
 		HttpSession session=request.getSession(false);
 		String username;
 		try {
@@ -125,20 +134,22 @@ public class FileController{
 			username = "";
 			System.out.println("没有登录“session”");
 		}
-		if (map.get("public").equals("public")){
-			username="public";
+		try {
+			if (map.get("public").equals("public")){
+				username="public";
+			}
+		}catch (Exception e){
+			System.out.println("不是public所以报错");
 		}
-//		System.out.println(request.getParameter("username"));
-		// 根据username得到文件信息
-		//判断是否为共用资源
-
+		System.out.println("public"+map.get("public"));
+		System.out.println("username:"+ username);
 		State<ArrayList<FileEntity>> state=fileService.getFileByUserName(username);
 		System.out.println(state);
 		return state;
 	}
 	// 通过用户名得到所有图片信息
-	@PostMapping("/getAllImagesByUsername}")
-	public State<ArrayList<FileEntity>> getAllImagesByUsername(HttpServletRequest request)throws  Exception{
+	@PostMapping("/getAllImagesByUsername")
+	public State<ArrayList<FileEntity>> getAllImagesByUsername(@RequestBody Map<String,String> map,HttpServletRequest request)throws  Exception{
 		State<ArrayList<FileEntity>> state=new State<ArrayList<FileEntity>>();
 		String username;
 		try {
@@ -147,6 +158,13 @@ public class FileController{
 		}catch (Exception e){
 			username="";
 			System.out.println("session错误");
+		}
+		try {
+			if (map.get("public").equals("public")){
+				username="public";
+			}
+		}catch (Exception e){
+			System.out.println("不是public页面所以报错");
 		}
 		state=fileService.getAllImagesByUsername(username);
 		System.out.println("username:"+username+"state:"+ state);

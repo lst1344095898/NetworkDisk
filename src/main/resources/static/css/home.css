@@ -129,7 +129,6 @@ source {
 
 .content {
     width: 100%;
-    border: 1px solid black;
 }
 
 .left_list {
@@ -244,4 +243,65 @@ source {
 .center_size {
     margin-top: 20px;
     margin-left: 150px;
+}
+/*//进度条*/
+#hear_alert {
+    display: none;
+    width: 100%;
+    position: absolute;
+}
+
+#download_bar {
+    z-index: 7;
+    display: none;
+    position: absolute;
+    width: 15%;
+    height: 100%;
+    background-color: white;
+    box-shadow: -4px 3px 20px 6px #4a4444
+}
+
+#showFieInfo {
+    display: block;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+#cancel_button {
+    position: relative;
+    margin-left: 230px;
+    display: none;
+}
+
+#showInfo {
+    position: absolute;
+    left: 30%;
+}
+
+.progress_bar {
+    float: left;
+    margin-left: 20px;
+    width: 70%;
+}
+
+
+.upFile_button_size {
+    width: 70px;
+    height: 30px;
+}
+
+#upFileButton {
+    position: relative;
+}
+
+#upFileButton input {
+    opacity: 0;
+    position: relative;
+    z-index: 10;
+}
+
+#upFileButton button {
+    position: absolute;
+    z-index: 9;
+    top: 0px;
 }
